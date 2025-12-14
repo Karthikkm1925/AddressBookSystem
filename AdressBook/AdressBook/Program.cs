@@ -40,7 +40,7 @@ namespace AddressBookSystem
                         break;
 
                     case "3":
-                        Console.WriteLine("Delete Contact – will be implemented in UC4");
+                        DeleteContact();
                         break;
 
                     case "4":
@@ -169,6 +169,28 @@ namespace AddressBookSystem
             Console.WriteLine("Contact updated successfully!");
         }
 
+        public static void DeleteContact()
+        {
+            var allContacts = addressBook.GetAllContacts();
+
+            if (allContacts.Count == 0)
+            {
+                Console.WriteLine("No contacts available to delete.");
+                return;
+            }
+
+            Console.WriteLine("Enter the First Name of the contact to delete:");
+            string firstName = Console.ReadLine();
+
+            Console.WriteLine("Enter the Last Name of the contact to delete:");
+            string lastName = Console.ReadLine();
+
+            bool deleted = addressBook.DeleteContactByName(firstName, lastName);
+
+            Console.WriteLine(deleted
+                ? "Contact deleted successfully."
+                : "Contact not found.");
+        }
 
 
     }

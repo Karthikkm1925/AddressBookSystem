@@ -40,5 +40,20 @@ namespace AddressBookSystem.Models
             return true;
         }
 
+        public bool DeleteContactByName(string firstName, string lastName)
+        {
+             
+            var contact = contacts.FirstOrDefault(c =>
+                c.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase) &&
+                c.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
+
+            if (contact == null)
+                return false;
+
+            contacts.Remove(contact);
+            return true;
+        }
+
+
     }
 }
