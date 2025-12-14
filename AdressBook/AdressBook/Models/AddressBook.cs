@@ -14,12 +14,5 @@ namespace AddressBookSystem.Models
         {
             contacts.Add(contact);
         }
-
-
-
-        public List<Contact> GetAllContacts()
-        {
-            return contacts;
-        }
     }
 }
