@@ -14,5 +14,31 @@ namespace AddressBookSystem.Models
         {
             contacts.Add(contact);
         }
+
+
+        public List<Contact> GetAllContacts()
+        {
+            return contacts;
+        }
+
+        public bool EditContact(string firstName, Contact updatedContact)
+        {
+            var existingContact = contacts
+                .FirstOrDefault(c => c.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase));
+
+            if (existingContact == null)
+                return false;
+
+            existingContact.LastName = updatedContact.LastName;
+            existingContact.Address = updatedContact.Address;
+            existingContact.City = updatedContact.City;
+            existingContact.State = updatedContact.State;
+            existingContact.Zip = updatedContact.Zip;
+            existingContact.Phone = updatedContact.Phone;
+            existingContact.Email = updatedContact.Email;
+
+            return true;
+        }
+
     }
 }
