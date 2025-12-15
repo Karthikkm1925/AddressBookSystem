@@ -10,10 +10,15 @@ namespace AddressBookSystem.Models
     {
         private List<Contact> contacts = new List<Contact>();
 
-        public void AddContact(Contact contact)
+        public bool AddContact(Contact contact)
         {
+            if (contacts.Any(c => c.Equals(contact)))
+                return false;
+
             contacts.Add(contact);
+            return true;
         }
+
 
 
         public List<Contact> GetAllContacts()

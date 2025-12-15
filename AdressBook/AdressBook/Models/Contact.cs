@@ -21,5 +21,25 @@ namespace AddressBookSystem.Models
         {
             return $"{FirstName} {LastName}, {Address}, {City}, {State}, {Zip}, {Phone}, {Email}";
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Contact))
+                return false;
+
+            Contact other = (Contact)obj;
+
+            return FirstName.Equals(other.FirstName, StringComparison.OrdinalIgnoreCase)
+                && LastName.Equals(other.LastName, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(
+                FirstName?.ToLower(),
+                LastName?.ToLower()
+            );
+        }
+
     }
 }

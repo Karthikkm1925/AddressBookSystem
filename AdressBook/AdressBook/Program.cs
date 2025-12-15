@@ -123,7 +123,17 @@ namespace AddressBookSystem
                     Email = email
                 };
 
-                currentAddressBook.AddContact(c);
+                bool added = currentAddressBook.AddContact(c);
+
+                if (!added)
+                {
+                    Console.WriteLine("Duplicate contact found. Contact not added.");
+                }
+                else
+                {
+                    Console.WriteLine("\nContact Added Successfully!\n");
+                    Console.WriteLine(c);
+                }
 
                 Console.WriteLine("\nContact Added Successfully!\n");
                 Console.WriteLine(c);
