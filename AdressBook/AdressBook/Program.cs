@@ -58,48 +58,57 @@ namespace AddressBookSystem
 
         public static void AddContact()
         {
+            bool addMore = true;
 
-             
-            Console.WriteLine("Enter First Name:");
-            string firstName = Console.ReadLine();
-
-            Console.WriteLine("Enter Last Name:");
-            string lastName = Console.ReadLine();
-
-            Console.WriteLine("Enter Address:");
-            string address = Console.ReadLine();
-
-            Console.WriteLine("Enter City:");
-            string city = Console.ReadLine();
-
-            Console.WriteLine("Enter State:");
-            string state = Console.ReadLine();
-
-            Console.WriteLine("Enter Zip:");
-            string zip = Console.ReadLine();
-
-            Console.WriteLine("Enter Phone:");
-            string phone = Console.ReadLine();
-
-            Console.WriteLine("Enter Email:");
-            string email = Console.ReadLine();
-
-            Contact c = new Contact
+            while (addMore)
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address,
-                City = city,
-                State = state,
-                Zip = zip,
-                Phone = phone,
-                Email = email
-            };
 
-            addressBook.AddContact(c);
+                Console.WriteLine("\nEnter First Name:");
+                string firstName = Console.ReadLine();
 
-            Console.WriteLine("\nContact Added Successfully!\n");
-            Console.WriteLine(c);
+                Console.WriteLine("\nEnter Last Name:");
+                string lastName = Console.ReadLine();
+
+                Console.WriteLine("\nEnter Address:");
+                string address = Console.ReadLine();
+
+                Console.WriteLine("\nEnter City:");
+                string city = Console.ReadLine();
+
+                Console.WriteLine("\nEnter State:");
+                string state = Console.ReadLine();
+
+                Console.WriteLine("\nEnter Zip:");
+                string zip = Console.ReadLine();
+
+                Console.WriteLine("\nEnter Phone:");
+                string phone = Console.ReadLine();
+
+                Console.WriteLine("\nEnter Email:");
+                string email = Console.ReadLine();
+
+                Contact c = new Contact
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Address = address,
+                    City = city,
+                    State = state,
+                    Zip = zip,
+                    Phone = phone,
+                    Email = email
+                };
+
+                addressBook.AddContact(c);
+
+                Console.WriteLine("\nContact Added Successfully!\n");
+                Console.WriteLine(c);
+
+                Console.Write("\nDo you want to add another contact? (Yes/No): ");
+                string choice = Console.ReadLine();
+
+                addMore = choice.Equals("Yes", StringComparison.OrdinalIgnoreCase); 
+            }
         }
 
 
